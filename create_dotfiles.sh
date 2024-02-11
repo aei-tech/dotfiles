@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-rsync ~/{.bashrc,.bash_aliases,.bashrc_custom} bash/
+# Bash
+rsync --include='.bashrc' --include='.bash_aliases' --include='.bashrc_custom' --exclude='*' ~/.dotfiles/bash/
