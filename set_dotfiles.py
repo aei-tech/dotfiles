@@ -11,8 +11,8 @@ import shutil  # Import the shutil module for file operations
 home_dir = os.path.expanduser("~")  # Get the path of the user's home directory
 
 # dotfiles directories to copy files from to home directory
-bash_dotfiles_dir = os.path.expanduser("~/.dotfiles/bash")  # Get the path of the bash dotfiles directory
-vim_dotfiles_dir = os.path.expanduser("~/.dotfiles/vim")  # Get the path of the vim dotfiles directory
+bash_dotfiles_dir = os.path.expanduser("~/dotfiles/bash")  # Get the path of the bash dotfiles directory
+vim_dotfiles_dir = os.path.expanduser("~/dotfiles/vim")  # Get the path of the vim dotfiles directory
 
 # List of files from above directories to copy to home filder
 bash_files_to_copy = [".bashrc", ".bashrc_custom", ".bash_aliases"]  # Create a list of bash files to copy
