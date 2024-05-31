@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # check for installed colordiff, rsync and vim
 alias cp='cp -i'
 alias cpv='rsync -ah --info=progress2'
