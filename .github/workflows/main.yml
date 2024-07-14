@@ -1,5 +1,5 @@
 name: "Test local environment setup"
-run-name: ${{ github.actor }}" is learning GitHub Actions
+run-name: ${{ github.actor }} is learning GitHub Actions
 
 on: workflow_dispatch
 
@@ -7,10 +7,11 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - name: "Testing brew"
-        run: echo "First GitHub Action"
-             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-             test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-             test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-             echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+      - run: |
+            echo "First GitHub Action"
+            apt-get install build-essential procps curl file git wget
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+            test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 
