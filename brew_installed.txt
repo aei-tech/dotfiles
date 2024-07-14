@@ -1,5 +1,4 @@
 fish
 kubectl
 kubectx
-kubens
 minikube
