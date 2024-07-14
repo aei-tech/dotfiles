@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - name: Set up environment and run tests
+      - name: Setup brew and install all packages
         run: |
           echo "First GitHub Action"
           pwd
@@ -20,5 +20,12 @@ jobs:
           test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
           cat ~/.bashrc
-          brew install $(cat brew_installed.txt)
+          xargs brew install < brew_installed.txt
         shell: bash
+
+      - name: Set up fish shell
+        run: |
+          echo "Setting up fish shell now..."
+          exec fish
+          echo $SHELL
+        
