@@ -7,18 +7,17 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - name: "First step checkout repo"
-        uses: actions/checkout@main
+      - uses: actions/checkout@main
       - run: |
-             echo "First GitHub Action"
-             pwd
-             ls -lha
-             whoami
-             sudo apt-get install build-essential procps curl file git wget xargs
-             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-             test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-             test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-             echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
-             cat ~/.bashrc
-      - run: xargs brew install < brew_installed.txt
+            echo "First GitHub Action"
+            pwd
+            ls -lha
+            whoami
+            sudo apt-get install build-essential procps curl file git wget xargs
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+            test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+            cat ~/.bashrc
+            xargs brew install < brew_installed.txt
 
