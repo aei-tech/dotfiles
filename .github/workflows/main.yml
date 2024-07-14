@@ -7,4 +7,10 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "First GitHub Action"
+      - name: "Testing brew"
+        run: echo "First GitHub Action"
+             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+             test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+             test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+             echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+
