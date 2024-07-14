@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+      
       - name: Setup brew and install all packages
         run: |
           echo "First GitHub Action"
@@ -26,6 +27,8 @@ jobs:
       - name: Set up fish shell
         run: |
           echo "Setting up fish shell now..."
-          exec fish
-          echo $SHELL
-        
+          export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+          which fish
+          fish -c 'echo "Fish shell version: $FISH_VERSION"'
+          fish -c 'echo "Current shell: $SHELL"'
+        shell: bash
