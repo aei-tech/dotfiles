@@ -22,6 +22,7 @@ jobs:
           echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
           cat ~/.bashrc
           xargs brew install < brew_installed.txt
+          export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
         shell: bash
 
       - name: Set up fish shell
@@ -31,4 +32,4 @@ jobs:
           which fish
           fish -c 'echo "Fish shell version: $FISH_VERSION"'
           fish -c 'echo "Current shell: $SHELL"'
-        shell: bash
+        shell: fish
