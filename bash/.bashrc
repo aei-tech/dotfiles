@@ -120,6 +120,10 @@ if [ -f ~/.bashrc_custom ]; then
     . ~/.bashrc_custom
 fi
 
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 source <(kubectl completion bash)
 
 
