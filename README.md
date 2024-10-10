@@ -24,3 +24,14 @@ The configurations in the file `bash/.bashrc` and `vim/.vimrc` are adjusted
 
 To restore the files from the dotfiles repo, you can use `set_dotfiles.py`. This copies the files to the source in the home directory.
 
+## Install brew packages
+
+```bash
+xargs brew install < brew_programs_list.txt
+```
+
+## Export installed brew packages
+
+```bash
+brew list > brew_installed.txt
+```
