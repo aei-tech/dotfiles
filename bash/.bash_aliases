@@ -23,12 +23,14 @@ alias ve='python3 -m venv ./venv'
 
 # Alias's to modified commands
 alias cp='cp -i'
-alias mv='mv -i'
-alias mkdir='mkdir -pv'
-alias ping='ping -c 10'
 alias less='less -R'
+alias mkdir='mkdir -pv'
 alias multitail='multitail --no-repeat -c'
+alias mv='mv -i'
+alias ping='ping -c 10'
+alias svi='sudo vi'
 alias vi='vim'
+alias vis='vim "+set si"'
 
 # Top running 10 processes
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
@@ -37,6 +39,6 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
+alias mountedinfo='df -hT'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
-alias mountedinfo='df -hT'
