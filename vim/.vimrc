@@ -1,4 +1,3 @@
-colorscheme seoul256
 set autoindent                                                      " automatically indent new lines
 set autowrite                                                       " automatically write files when changing when multiple files open
 set backspace=indent,eol,start                                      " backspace works as expected
@@ -87,3 +86,10 @@ set listchars=tab:▸\ ,space:·,trail:·
 " Set up viminfo
 set viminfo='100,<50,s10,h,f1,r10'
 set viminfo+=n~/.viminfo
+
+" Default theme of vim
+" colorscheme gruvbox8
+" colorscheme gruvbox8_hard
+" colorscheme gruvbox8_soft
+" colorscheme seoul256
+colorscheme zenburn
