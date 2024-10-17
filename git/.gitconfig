@@ -24,4 +24,5 @@ sections
 [merge]
   conflictstyle = diff3
 [diff]
-  colorMoved = delta
+  # colorMoved = default
+  tool = delta
