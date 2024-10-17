@@ -125,5 +125,3 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 source <(kubectl completion bash)
-
-
