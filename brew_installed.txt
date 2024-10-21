@@ -1,5 +1,6 @@
 basti
 curl
+dive
 eza
 fish
 fisher
@@ -23,8 +24,11 @@ lazydocker
 lazygit
 minikube
 neovim
+nushell
 nerdctl
 pre-commit
+pyenv
+ripgrep
 skopeo
 thefuck
 tmux
