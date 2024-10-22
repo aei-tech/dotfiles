@@ -1,6 +1,10 @@
 basti
+bat
+cheat
 curl
 dive
+duf
+dysk
 eza
 fish
 fisher
@@ -9,6 +13,7 @@ hadolint
 helm
 helmfile
 helmsman
+httpie
 k3d
 k9s
 kube-ps1
@@ -23,13 +28,17 @@ kubie
 lazydocker
 lazygit
 minikube
+ncdu
 neovim
 nushell
 nerdctl
+poetry
 pre-commit
 pyenv
 ripgrep
+sd
 skopeo
+tealdeer
 thefuck
 tmux
 trivy
