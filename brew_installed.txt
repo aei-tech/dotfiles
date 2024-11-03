@@ -42,5 +42,6 @@ tealdeer
 thefuck
 tmux
 trivy
+vim
 virtualfish
 xclip
