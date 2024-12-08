@@ -5,75 +5,27 @@ export HISTTIMEFORMAT="[%d.%m.%y %T] "
 export HISTSIZE=100000
 export HISTFILESIZE=100000
 
-# Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-# Don't put duplicate lines in the history and do not add lines that start with a space
-export HISTCONTROL=erasedups:ignoredups:ignorespace
-# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
-shopt -s checkwinsize
-
-# Show auto-completion list automatically, without double tab
-if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
-
-# Set the default editor
-export EDITOR="/usr/bin/vim"
-export VISUAL="/usr/bin/vim"
-export vim=vim"/usr/bin/vim"
-
-# Replace batcat with cat on Fedora as batcat is not available as a RPM in any form
-if command -v lsb_release > /dev/null; then
-    DISTRIBUTION=$(lsb_release -si)
-
-    if [ "$DISTRIBUTION" = "Fedora" ] || [ "$DISTRIBUTION" = "Ubuntu" ]; then
-        alias cat='bat'
-    else
-        alias cat='batcat'
-    fi
-fi
-
-# To have colors for ls and all grep commands such as grep, egrep and zgrep
-export CLICOLOR=1
-export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:'
-#export GREP_OPTIONS='--color=auto' #deprecated
-alias grep="/usr/bin/grep $GREP_OPTIONS"
-unset GREP_OPTIONS
-
-# Color for manpages in less makes manpages a little easier to read
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
-# Goes up a specified number of directories  (i.e. up 4)
-up ()
-{
-	local d=""
-	limit=$1
-	for ((i=1 ; i <= limit ; i++))
-		do
-			d=$d/..
-		done
-	d=$(echo $d | sed 's/^\///')
-	if [ -z "$d" ]; then
-		d=..
-	fi
-	cd $d
-}
-
-# Git
 PS1="\[\033[38;5;242m\]\u@\h"
 PS1+=" \[\033[38;5;87m\]\w"
 PS1+='\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "🔀 ("; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo ")"; fi)'
 PS1+="\n\[$(tput sgr0)\]└─"
 PS1+=" \[\033[38;5;11m\]\$\[$(tput sgr0)\] "
+# kubeprompt
+# https://github.com/jlesquembre/kubeprompt
+#PS1="[\u@\h \W \$(kubeprompt -f default)]\$ "
+source "/home/linuxbrew/.linuxbrew/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
 export PS1
 
-# make brew available
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# fuzzy search
-eval "$(fzf --bash)"
+# Starship prompt
+eval "$(starship init bash)"
+
+# Set up fzf key bindings and fuzzy completion
+# bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/fzf --bash)"
+
+# Correct commands
+eval $(thefuck --alias)
