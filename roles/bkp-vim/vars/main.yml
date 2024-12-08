@@ -1,11 +1,11 @@
 ---
 
 vim_themes:
-  - ".vim/colors/gruvbox8.vim"
-  - ".vim/colors/gruvbox8_hard.vim"
-  - ".vim/colors/gruvbox8_soft.vim"
-  - ".vim/colors/seoul256.vim"
-  - ".vim/colors/zenburn.vim"
+  - "gruvbox8.vim"
+  - "gruvbox8_hard.vim"
+  - "gruvbox8_soft.vim"
+  - "seoul256.vim"
+  - "zenburn.vim"
 vimrc: ".vimrc"
 
 ...
