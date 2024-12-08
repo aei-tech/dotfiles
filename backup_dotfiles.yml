@@ -6,9 +6,6 @@
 
   vars:
     dotfiles_to_backup:
-      - .bash_aliases
-      - .bashrc
-      - .bashrc_custom
       - .config/starship.toml
       - .gitconfig
       - .tmux.conf
@@ -29,13 +26,17 @@
         state: directory
         mode: '750'
 
-    - name: "Backup specified dotfiles to repository"
+#    - name: "Backup specified dotfiles to repository"
+#
+#      ansible.builtin.copy:
+#        src: "{{ ansible_env.HOME }}/{{ item }}"
+#        dest: "{{ dotfiles_repo_path }}/{{ item }}"
+#      loop: "{{ dotfiles_to_backup }}"
+#      ignore_errors: true
 
-      ansible.builtin.copy:
-        src: "{{ ansible_env.HOME }}/{{ item }}"
-        dest: "{{ dotfiles_repo_path }}/{{ item }}"
-      loop: "{{ dotfiles_to_backup }}"
-      ignore_errors: true
+    - name: "Get bash dotfiles"
+      ansible.builtin.include_role:
+        name: bkp-bash
 
     - name: "Push to git"
       ansible.builtin.include_role:
