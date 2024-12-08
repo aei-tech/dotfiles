@@ -1,12 +1,26 @@
 ---
 
+# ensure vim directory and colors exist inn dotfiles
+- name: "Ensure vim directory exists"
+  ansible.builtin.file:
+    path: "{{ dotfiles_repo_path }}/{{ item }}"
+    state: directory
+    mode: '750'
+  loop:
+    - ".vim"
+    - ".vim/colors"
+
 - name: "VIM Backup of rc and colors"
   ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "{{ dotfiles_repo_path }}/vim/{{ item }}"
+    src: "{{ ansible_env.HOME }}/{{ item }}"
+    dest: "{{ dotfiles_repo_path }}/{{ item }}"
     mode: '660'
   loop:
     - "{{ vimrc }}"
-    - "{{ vim_themes }}"
+    - "{{ vim_themes[0-4] }}"
+#    - "{{ vim_themes[1] }}"
+#    - "{{ vim_themes[2] }}"
+#    - "{{ vim_themes[3] }}"
+#    - "{{ vim_themes[4] }}"
 
 ...

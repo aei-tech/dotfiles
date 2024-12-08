@@ -34,9 +34,13 @@
 #      loop: "{{ dotfiles_to_backup }}"
 #      ignore_errors: true
 
-    - name: "Get bash dotfiles"
+    - name: "Get bash dotfiles into repository"
       ansible.builtin.include_role:
         name: bkp-bash
+
+    - name: "Get vim dotfiles into repository"
+      ansible.builtin.include_role:
+        name: bkp-vim
 
     - name: "Push to git"
       ansible.builtin.include_role:

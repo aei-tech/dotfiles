@@ -1,11 +1,11 @@
 ---
 
 vim_themes:
-  - "{{ ansible_env.HOME }}/.vim/colors/gruvbox8"
-  - "{{ ansible_env.HOME }}/.vim/colors/gruvbox8_hard"
-  - "{{ ansible_env.HOME }}/.vim/colors/gruvbox8_soft"
-  - "{{ ansible_env.HOME }}/.vim/colors/seoul256"
-  - "{{ ansible_env.HOME }}/.vim/colors/zenburn"
+  - ".vim/colors/gruvbox8.vim"
+  - ".vim/colors/gruvbox8_hard.vim"
+  - ".vim/colors/gruvbox8_soft.vim"
+  - ".vim/colors/seoul256.vim"
+  - ".vim/colors/zenburn.vim"
 vimrc: ".vimrc"
 
 ...
