@@ -17,10 +17,10 @@
     mode: '660'
   loop:
     - "{{ vimrc }}"
-    - "{{ vim_themes[0-4] }}"
-#    - "{{ vim_themes[1] }}"
-#    - "{{ vim_themes[2] }}"
-#    - "{{ vim_themes[3] }}"
-#    - "{{ vim_themes[4] }}"
+    - "{{ vim_themes[0] }}"
+    - "{{ vim_themes[1] }}"
+    - "{{ vim_themes[2] }}"
+    - "{{ vim_themes[3] }}"
+    - "{{ vim_themes[4] }}"
 
 ...
