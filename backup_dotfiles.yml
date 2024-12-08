@@ -36,7 +36,7 @@
 
     - name: "Get bash dotfiles into repository"
       ansible.builtin.include_role:
-        name: bkp-bash
+        name: df-bash
 
     - name: "Get vim dotfiles into repository"
       ansible.builtin.include_role:
