@@ -1,0 +1,12 @@
+---
+
+- name: "VIM Backup of rc and colors"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ dotfiles_repo_path }}/vim/{{ item }}"
+    mode: '660'
+  loop:
+    - "{{ vimrc }}"
+    - "{{ vim_themes }}"
+
+...
