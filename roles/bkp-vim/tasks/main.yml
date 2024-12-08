@@ -7,8 +7,8 @@
     state: directory
     mode: '750'
   loop:
-    - ".vim"
-    - ".vim/colors"
+    - "vim"
+    - "vim/colors"
 
 - name: "VIM Backup of rc and colors"
   ansible.builtin.copy:
