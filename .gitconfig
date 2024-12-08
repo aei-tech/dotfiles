@@ -1,0 +1,32 @@
+[user]
+  email = alexander.eirich.87@gmail.com
+  name = Alexander Eirich
+[init]
+  defaultBranch = main
+[core]
+  autocrlf = input
+  editor = vim
+  pager = delta
+  whitespace = trailing-space
+[interactive]
+  diffFilter = delta --color-only
+[http]
+  sslbackend = gnutls
+[alias]
+  logg = log --oneline --all --decorate --graph
+[delta]
+  minus-style = dim
+  navigate = true    # use n and N to move between diff sections
+  plus-style = green
+  syntax-highlight = true
+sections
+  line-numbers = true
+# delta detects terminal colors automatically; set one of these to disable auto-detection
+# dark = true
+# light = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  tool = delta
+  #colorMoved = default
+

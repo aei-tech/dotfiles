@@ -1,0 +1,58 @@
+---
+
+- name: "Backup dotfiles"
+  hosts: localhost
+  connection: local
+  vars:
+    dotfiles_to_backup:
+      - .bash_aliases
+      - .bashrc
+      - .bashrc_custom
+      - .config/starship.toml
+      - .gitconfig
+      - .tmux.conf
+      - .vim/colors/gruvbox8_hard.vim
+      - .vim/colors/gruvbox8_soft.vim
+      - .vim/colors/gruvbox8.vim
+      - .vim/colors/seoul256.vim
+      - .vim/colors/zenburn.vim
+      - .vimrc
+      - .zshrc
+    dotfiles_repo_path: "~/dotfiles"
+
+  tasks:
+
+    - name: "Ensure dotfiles repository directiry exists"
+      ansible.builtin.file:
+        path: "{{ dotfiles_repo_path }}"
+        state: directory
+        mode: '755'
+
+    - name: "Backup specified dotfiles to repository"
+      ansible.builtin.copy:
+        src: "{{ ansible_env.HOME }}/{{ item }}"
+        dest: "{{ dotfiles_repo_path }}/{{ item }}"
+      loop: "{{ dotfiles_to_backup }}"
+      ignore_errors: true
+
+    - name: "Check for changes in dotfiles repository"
+      ansible.builtin.command:
+        cmd: git -C "{{ dotfiles_repo_path }}" status --porcelain
+      register: git_status
+      changed_when: false
+
+    - name: "Commit changes and push dotfiles"
+      block:
+        - name: "Stage chhanges"
+          ansible.builtin.command:
+            cmd: git -C "{{ dotfiles_repo_path }}" add .
+
+        - name: Commit changes
+          ansible.builtin.command:
+            cmd: git -C "{{ dotfiles_repo_path }}" commit -m "Backup dotfiles - {{ ansible_date_time.iso8601 }}"
+
+        - name: Push changes
+          ansible.builtin.command:
+            cmd: git -C "{{ dotfiles_repo_path }}" push
+
+      when: git_status.stdout | length > 0

@@ -3,6 +3,7 @@ bat
 cheat
 curl
 dive
+ducker
 duf
 dysk
 eza
@@ -32,6 +33,7 @@ ncdu
 neovim
 nushell
 nerdctl
+opentofu
 poetry
 pre-commit
 pyenv

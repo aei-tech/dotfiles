@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Save timestamp for every command
+export HISTTIMEFORMAT="[%d.%m.%y %T] "
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
+shopt -s histappend
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
+PS1="\[\033[38;5;242m\]\u@\h"
+PS1+=" \[\033[38;5;87m\]\w"
+PS1+='\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo "🔀 ("; fi)\[\033[38;5;202m\]$(git branch 2>/dev/null | grep "^*" | colrm 1 2)\[\033[38;5;63m\]$(if git rev-parse --git-dir > /dev/null 2>&1; then echo ")"; fi)'
+PS1+="\n\[$(tput sgr0)\]└─"
+PS1+=" \[\033[38;5;11m\]\$\[$(tput sgr0)\] "
+# kubeprompt
+# https://github.com/jlesquembre/kubeprompt
+#PS1="[\u@\h \W \$(kubeprompt -f default)]\$ "
+source "/home/linuxbrew/.linuxbrew/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
+export PS1
+
+# Starship prompt
+eval "$(starship init bash)"
+
+# Set up fzf key bindings and fuzzy completion
+# bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/fzf --bash)"
+
+# Correct commands
+eval $(thefuck --alias)
