@@ -3,6 +3,11 @@
 - name: "Get bash dotfiles"
   ansible.builtin.include_tasks:
     file: "get-bash-files.yml"
-  when: bash_files | bool
+  when: get_bash | bool
+
+- name: "Set bash dotfiles"
+  ansible.builtin.include_tasks:
+    file: "set-bash-files.yml"
+  when: set_bash is defined and set_bash == "true"
 
 ...

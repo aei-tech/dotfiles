@@ -1,0 +1,13 @@
+---
+
+- name: "Set bash dotfiles"
+  ansible.builtin.copy:
+    src: "{{ dotfiles_repo_path }}/bash/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item }}"
+    mode: '664'
+  loop:
+    - "{{ bash_aliases }}"
+    - "{{ bashrc_custom }}"
+    - "{{ bashrc }}"
+
+...
