@@ -43,7 +43,7 @@
         name: bkp-vim
 
     - name: "Push to git"
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: push-dotfiles
       tags: push
 
