@@ -45,6 +45,8 @@
     - name: "Push to git"
       ansible.builtin.import_role:
         name: push-dotfiles
-      tags: push
+      tags:
+        - never
+        - push
 
 ...
