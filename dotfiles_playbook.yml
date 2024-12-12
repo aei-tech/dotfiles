@@ -35,11 +35,11 @@
 #      ignore_errors: true
 
     - name: "Get bash dotfiles into repository"
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: df-bash
 
     - name: "Get vim dotfiles into repository"
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: bkp-vim
 
     - name: "Push to git"
