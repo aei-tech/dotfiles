@@ -45,5 +45,6 @@
     - name: "Push to git"
       ansible.builtin.include_role:
         name: push-dotfiles
+      tags: push
 
 ...
